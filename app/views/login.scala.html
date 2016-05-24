@@ -1,0 +1,42 @@
+@(form: Form[Application.Login])
+
+@title = {
+    Login
+}
+
+@main(title, nav = "login") {
+        
+        @helper.form(routes.Application.authenticate) {
+            
+            <h2>Sign in please</h2>
+            
+            @if(form.hasGlobalErrors) { 
+                <p class="error">
+                    @form.globalError.message
+                </p>
+            }
+            
+            @if(flash.contains("success")) {
+                <p class="success">
+                    @flash.get("success")
+                </p>
+            }
+            
+            <p>
+                <input type="text" name="username" placeholder="username" value="@form("username").value">
+            </p>
+            <p>
+                <input type="password" name="password" placeholder="Password">
+            </p>
+            <p>
+                <button type="submit">Login</button>
+            </p>
+            
+        }
+        
+        <p class="note">
+            With great power comes great responsibility.
+        </p>
+            
+}
+    

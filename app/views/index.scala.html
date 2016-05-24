@@ -1,0 +1,16 @@
+@(hint: String)(message: String)
+
+@title = {
+    Video Conference System
+}
+
+@main(title, nav = "index") {
+    
+    <h2>@@: @hint</h2>
+    
+    @if(!message.isEmpty()) {
+		<p>@message</p>
+	}
+}
+    
+    

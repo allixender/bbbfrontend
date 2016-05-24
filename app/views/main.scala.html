@@ -1,0 +1,73 @@
+@(title: Html, nav: String = "")(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/formerror.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+    </head>
+   	<body>
+       	<div class="navbar navbar-inverse navbar-fixed-top">
+      		<div class="navbar-inner">
+        		<div class="container">
+          			<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+          			</button>
+          			<a class="brand" href="/">Home</a>
+          			<div class="nav-collapse collapse">
+	            		<ul class="nav">
+                        	<li class="@("active".when(nav == "meetings"))">
+                            	<a href="@routes.Meetings.getMeetings()">Meetings</a>
+                        	</li>
+                        	<li class="@("active".when(nav == "create"))">
+                            	<a href="@routes.Meetings.createMeetingForm()">New Meeting</a>
+                        	</li>
+                        	<li class="@("active".when(nav == "recordings"))">
+                            	<a href="@routes.Recordings.getRecordings()">Recordings</a>
+                        	</li>
+                        	<li class="@("active".when(nav == "logout"))">
+                            	<a href="@routes.Application.logout()">Logout</a>
+                        	</li>
+                        	<li class="@("active".when(nav == "help"))">
+                            	<a href="@routes.Application.help()">Help</a>
+                        	</li>
+                    	</ul>
+          			</div><!--/.nav-collapse -->
+        		</div>
+      		</div>
+    	</div>
+       	<div class="container">
+           	<div class="content">
+                <div class="page-header">
+                	<br />
+                	<br />
+                    <h1>@title</h1>
+                </div>
+                <div class="row">
+                    <div class="span14">
+                        @content
+                    </div>
+                </div>
+           	</div>
+           	<hr>
+           	<!-- FOOTER -->
+           	<footer>
+           		<p class="pull-right"><a href="#">Back to top</a></p>
+
+           	</footer>
+       </div>
+       <script src="@routes.Assets.at("javascripts/bootstrap.js")" type="text/javascript"></script>
+       <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
+       
+    </body>
+</html>

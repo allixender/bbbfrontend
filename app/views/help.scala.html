@@ -1,0 +1,171 @@
+@(hint: String)(message: String)
+
+@title = {
+    Video Conference System: @hint and @message
+}
+
+@main(title, nav = "help") {
+
+    <h2>Contents</h2>
+    <ol>
+		<li><a href="#terms">Terms and Conditions</a></li>
+		<li><a href="#join">Attendees - Check and Join</a></li>
+		<li><a href="#create">Quick start, create and invite</a></li>
+		<li><a href="#faq">Frequently asked questions - FAQ</a></li>
+	</ol>
+
+
+    <a id="terms"></a>
+    <h2>Terms and Conditions</h2>
+    <p>
+    Fair and responsible use, please!
+    </p>
+    </p>
+
+    <a id="join"></a>
+    <h2>Attendees - Check and Join</h2>
+
+    <div class="alert alert-info">
+	    <ul>
+				<li>A <b>headset is strongly recommended</b> to avoid echoing and too much background noise</li>
+				<li>for video sharing, a web cam is required</li>
+				<li>Flash plugin for the browser is required</li>
+		</ul>
+	</div>
+
+	<div class="alert alert-block">
+		Plug headset and web cam into your computer BEFORE joining, please!
+	</div>
+
+    A user/attendee can join meetings by two means:
+
+    <ul>
+		<li>Being invited with an invitation link from the moderator/session chair</li>
+		<li>Login on the website, list available meetings and join </li>
+	</ul>
+
+	Join through an <b>invitation link</b> is pretty straightforward:
+
+	<ul>
+		<li>Open the link in the browser (Internet Explorer, Firefox, Chrome ...)</li>
+		<li>Enter your name and click <b>Start</b></li>
+	</ul>
+
+	<div class="media">
+		<a href="@routes.Assets.at("images/join1.png")">
+	    	<img class="media-object" src="@routes.Assets.at("images/join1.png")">
+	    </a>
+    </div>
+
+	To join via log-in (if you have the website credentials but not the meeting links etc)
+	<ul>
+		<li>Open <a href="http://localhost:8080/">http://localhost:8080/</a> in your browser</li>
+		<li>Login/meetings ( ask project lead for credentials )</li>
+		<li>You see a list of active meetings</li>
+		<li>Click join to be forwarded to enter your name and join</li>
+	</ul>
+
+	<div class="media">
+		<a href="@routes.Assets.at("images/join2.png")">
+	    	<img class="media-object" src="@routes.Assets.at("images/join2.png")">
+	    </a>
+    </div>
+
+    Within the BigBlueButton video conference console / web meeting application (whatever you want to name it), there are a couple of buttons with some functionality:
+	<ul>
+		<li>Share audio (basically join with speech and listening) or mute yourself</li>
+		<li>Share camera (allow other attendees to see you)</li>
+	</ul>
+
+	<div class="media">
+		<a href="@routes.Assets.at("images/join3.png")">
+	    	<img class="media-object" src="@routes.Assets.at("images/join3.png")">
+	    </a>
+    </div>
+
+    <div class="alert alert-block">
+    	The audio (means also your microphone) are already shared!
+    	Just wait a moment, and ou will hear others and they should be ablt to hear you!
+    </div>
+
+    <div class="alert alert-info">
+    	Your web cam / video is NOT automagically shared, please use the <b>share video</b> button in the upper left corner. This opens a <b>preview</b>
+    	window. Now press the <b>play</b> button in that little window.
+    </div>
+
+	<div class="media">
+		<a href="@routes.Assets.at("images/join4.png")">
+	    	<img class="media-object" src="@routes.Assets.at("images/join4.png")">
+	    </a>
+    </div>
+
+    <div class="alert alert-info">
+    	The moderator has some more privileges:
+    </div>
+
+	<ul>
+		<li>Mute other users as well</li>
+		<li>Share his desktop (let other users see his own computer screen)</li>
+		<li>Upload a presentation (max 2mb pdf as of now ) and click through the presentation</li>
+    </ul>
+    <br />
+
+    <a id="create"></a>
+    <h2>Quick start, create and invite</h2>
+
+		<ul>
+			<li>A <b>headset is strongly recommended</b> to avoid echoing and too much background noise</li>
+			<li>for video sharing, a web cam is required</li>
+			<li>Flash plugin for the browser is required</li>
+			<li>Moderator (session chair) opens address in browser: <a href="http://localhost:8080/">http://localhost:8080/</a> </li>
+			<li>To create a meeting, you must be logged in</li>
+			<li><b>New Meeting</b></li>
+			<ul>
+				<li>Enter a simple meeting name</li>
+				<li>Assign a moderator password for the meeting (compulsory, min 6 characters and not 'bbb'!)</li>
+				<li>Optionally assign an attendee password (has a default value, if left empty)</li>
+				<li>Check <b>Agree to terms and conditions</b>  </li>
+			</ul>
+		</ul>
+
+		<div class="media">
+			<a href="@routes.Assets.at("images/create1.png")">
+		    	<img class="media-object" src="@routes.Assets.at("images/create1.png")">
+		    </a>
+	    </div>
+
+    	If successful, you will be forwarded to the <b>join</b> page
+		<ul>
+			<li>Attention: copy the attendee link and send/mail it to your attendees</li>
+			<li>You can copy the moderator link as a backup for yourself (if you have to leave the meeting and want to re-join later with moderator rights)</li>
+			<li>Enter your name and click start</li>
+			<li>You will leave this page and be forwarded to the video conference</li>
+		</ul>
+
+		<div class="media">
+			<a href="@routes.Assets.at("images/create2.png")">
+		    	<img class="media-object" src="@routes.Assets.at("images/create2.png")">
+		    </a>
+	    </div>
+
+    <a id="faq"></a>
+    <h2>FAQ</h2>
+
+	<div class="alert alert-block">
+    	If something doesn't work, logout, plug-in headset and webcam, and login again.
+    </div>
+
+    <div class="alert alert-info">
+    	Be generally patient, due to global audio and video and complex network connections a significant lag can occur, which only means, wait a second longer to respond.
+    </div>
+
+    <div class="alert alert-success">
+    	Maybe try a different browser, we have had good and mediocre experiences with Internet Explorer, Mozilla Firefox and Google Chrome.
+    </div>
+
+    <div class="alert alert-error">
+    	Make sure, you have access to a good (reliable and reasonable bandwidth) internet connection, you still could switch off your own 
+    	video sharing and the video dock to ensure at least a proper audio connection.
+    </div>
+
+}

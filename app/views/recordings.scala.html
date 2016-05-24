@@ -1,0 +1,55 @@
+@(recordings: List[Recording])
+
+@import helper._
+
+@title = {
+    List recordings
+}
+
+@main(title, nav = "recordings") {
+
+    <h2>@recordings.size() recording(s) found</h2>
+
+    @if(recordings.size() > 0) {
+
+    <p>Click the meeting links for simple replay (slides, audio, chat - no video links, desktop shares or whiteboard drawings yet)</p>
+
+    <table class="table table-bordered">
+
+        @for(recording <- recordings) {
+            <tr>
+
+            	<td>
+	            	@if(recording.published) {
+		                <a href="http://localhost:8080/playback/simple/playback.html?meetingId=@recording.recordID" target="_blank">
+		                	@recording.meetingID</a>
+		            } else {
+		            	@recording.meetingID
+		            }
+	            </td>
+	            <td>
+	             	@recording.startTime
+	            </td>
+	            <td>
+	            	@recording.endTime
+	            </td>
+	            <td>
+	                @if(recording.published) {
+		                <a class="btn btn-primary btn-small" href="@routes.Recordings.unpublish(recording.recordID)">
+					    	Unpublish
+					    </a>
+
+		            } else {
+		            	<a class="btn btn-primary btn-small" href="@routes.Recordings.publish(recording.recordID)">
+					    	Publish
+					    </a>
+					    <a class="btn btn-primary btn-small" href="@routes.Recordings.delete(recording.recordID)">
+					    	Delete
+					    </a>
+		            }
+		         </td>
+            </tr>
+        }
+    </table>
+    }
+}

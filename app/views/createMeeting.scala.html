@@ -1,0 +1,77 @@
+@(meetingForm: Form[Meeting])
+
+@import helper._
+@import helper.twitterBootstrap._
+
+@title = {
+    Create a new meeting
+}
+
+@main(title, nav = "create") {
+
+    @if(meetingForm.hasErrors) {
+        <div class="alert-message error">
+            <p><strong>Oops</strong> Please review your mistakes</p>
+        </div>
+    }
+
+    @helper.form(action = routes.Meetings.createMeeting) {
+
+        <fieldset>
+            <legend>Needed information</legend>
+
+            @inputText(
+                meetingForm("meetingID"),
+                '_label -> "Meeting ID / Name",
+                '_help -> "Please enter a short meeting name.",
+                '_error -> meetingForm.error("meetingID")
+            )
+
+            @inputPassword(
+                meetingForm("moderatorPW"),
+                '_label -> "Moderator Password",
+                '_help -> "Please define a moderator password for this meeting, must be at least 6 characters. ",
+                '_error -> meetingForm.error("moderatorPW")
+            )
+
+            @inputPassword(
+                meetingForm("attendeePW"),
+                '_label -> "Attendee Password ",
+                '_help -> "An optional attendee password, defaults to bbb"
+            )
+
+            @inputText(
+                meetingForm("moderatorEmail"),
+                '_label -> "Your email address",
+                '_help -> "Please enter your email address to receive a confirmation email.",
+                '_error -> meetingForm.error("moderatorEmail")
+            )
+
+            @checkbox(
+                meetingForm("record"),
+                '_label -> None, '_text -> "Record this meeting?",
+                '_showConstraints -> false
+            )
+
+        </fieldset>
+
+        <fieldset>
+
+            @checkbox(
+                meetingForm("accept"),
+                '_label -> None, '_text -> "You agree to the terms and conditions (fair and responsible use)",
+                '_showConstraints -> false
+            )
+
+            <a href="@routes.Application.help" target="_blank">Terms and conditions</a>
+
+        </fieldset>
+
+        <div class="actions">
+            <input type="submit" class="btn primary" value="Create">
+            <a href="@routes.Meetings.getMeetings" class="btn">Cancel</a>
+        </div>
+
+    }
+
+}

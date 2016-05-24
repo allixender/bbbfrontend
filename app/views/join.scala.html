@@ -1,0 +1,53 @@
+@(form: Form[Joining.Invitation])(icard: Joining.Invitation)
+
+@title = {
+    Join a meeting
+}
+
+@main(title, nav = "join") {
+        
+        @helper.form(routes.Joining.eval) {
+            
+            <h2>Meeting ID is: @icard.meetingID</h2>
+            <p>
+                Please enter your name.
+            </p>
+            <p>
+                <input type="text" name="username" placeholder="username" value="@form("username").value">
+                <input type="hidden" name="meetingID" value="@icard.meetingID">
+                <input type="hidden" name="password" value="@icard.password">
+            </p>
+            <p>
+                <button type="submit">Start</button>
+            </p>
+            
+        }
+        <p class="note">
+            Click <em>Start</em> to leave this page and enter the meeting.
+        </p>
+       
+        @if(icard.moderatorMeetingUrl != null) {
+			<br />
+	        <hr>
+	        <p class="note">
+				The meeting has been succesfully created and a confirmation email should have been sent to your inbox.
+	        </p>
+	        <br />
+        
+			<h3>Attendees Invitation Link</h3>
+	        <p class="note">
+				You can copy this link into an email and send it to your attendees.
+	        </p>
+			<textarea rows="3" cols="400">@icard.attendeeMeetingUrl</textarea>
+		
+		  	<h3>Your Moderator Backup Link</h3>
+		  	<p class="note">
+				You can copy this link to attain moderator privileges if you have to leave and re-enter the meeting, 
+					or if like to invite other moderators.
+	        </p>
+			<textarea rows="3" cols="400">@icard.moderatorMeetingUrl</textarea>
+			
+		}
+            
+}
+    

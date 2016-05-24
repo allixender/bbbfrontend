@@ -1,0 +1,37 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+# Authentication
+GET     /login                      controllers.Application.login()
+POST    /login                      controllers.Application.authenticate()
+GET     /logout                     controllers.Application.logout()
+
+#Join to an existing meeting (by selection or invitation
+GET		/join/:meetid/:chksum		controllers.Joining.join(meetid: String, chksum: String)
+POST    /join/eval			        controllers.Joining.eval()
+
+#Get a list of the Meetings.
+GET     /meetings	             	controllers.Meetings.getMeetings()
+
+#Creates a new meeting.
+GET     /meetings/create	        controllers.Meetings.createMeetingForm()
+POST    /meetings/create	        controllers.Meetings.createMeeting()
+
+#Ends meeting.
+POST    /meetings/:id/end		    controllers.Meetings.endMeeting(id: String)
+
+# Recordinsg management
+GET		/recordings					controllers.Recordings.getRecordings()
+GET		/recordings/:recordID/publish		controllers.Recordings.publish(recordID: String)
+GET		/recordings/:recordID/unpublish		controllers.Recordings.unpublish(recordID: String)
+GET		/recordings/:recordID/delete		controllers.Recordings.delete(recordID: String)
+
+GET		/help.html					controllers.Application.help()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /$file<default.pdf>        controllers.Assets.at(path="/public", file)

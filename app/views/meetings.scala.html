@@ -1,0 +1,24 @@
+@(meetings: List[Meeting])
+
+@import helper._
+
+@title = {
+    List Meetings
+}
+
+@main(title, nav = "meetings") {
+    
+    <h2>@meetings.size() meeting(s) running</h2>
+    
+    <ul>
+        @for(meeting <- meetings) {
+            <li>
+                @meeting.meetingID
+                
+                @form(routes.Joining.join(meeting.meetingID, meeting.attendeePW)) {
+                    <input type="submit" value="join">
+                }
+            </li>
+        }
+    </ul>
+}
